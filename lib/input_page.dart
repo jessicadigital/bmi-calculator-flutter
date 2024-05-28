@@ -12,8 +12,66 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Center(
-        child: Text('Body Text'),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color(0xFF1D1E33),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color(0xFF1D1E33),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Color(0xFF1D1E33),
+              ),
+              margin: EdgeInsets.all(15.0),
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color(0xFF1D1E33),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color(0xFF1D1E33),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
