@@ -2,12 +2,9 @@ import 'package:bmi_calculator/icon_content.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'constants.dart';
 
-const double bottomContainerHeight = 80.0;
-const Color activeCardColor = Color(0xFF1D1E33);
-const Color inactiveCardColor = Color(0xFF111328);
-const Color bottomContainerColor = Color(0xFFEB1555);
-enum Gender {male, female}
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -15,23 +12,26 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Gender? selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('BMI Calculator'.toUpperCase()),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
+                    color: selectedGender == Gender.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
@@ -45,7 +45,9 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
+                    color: selectedGender == Gender.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
@@ -61,7 +63,45 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: ReusableCard(color: Color(0xFF1D1E33)),
+            child: ReusableCard(
+              color: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Height'.toUpperCase(),
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    activeColor: Color(0xFFEB1555),
+                    inactiveColor: Color(0xFF8D8E98),
+                    max: 220.0,
+                    min: 120.0,
+                    onChanged: (double newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                    },
+                    value: height.toDouble()
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
@@ -76,14 +116,11 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            color: bottomContainerColor,
-            height: bottomContainerHeight,
+            color: kBottomContainerColor,
+            height: kBottomContainerHeight,
           ),
         ],
       ),
     );
   }
 }
-
-
-

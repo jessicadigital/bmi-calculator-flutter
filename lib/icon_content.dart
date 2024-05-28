@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-const TextStyle labelTextStyle = TextStyle(
-  color: Color(0xFF8D8E98),
-  fontSize: 18.0,
-);
+import 'constants.dart';
 
 class IconContent extends StatelessWidget {
   final IconData icon;
@@ -25,7 +21,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           label.toUpperCase(),
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );
