@@ -1,8 +1,10 @@
-import 'package:bmi_calculator/icon_content.dart';
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import '../components/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
+import '../constants.dart';
+import '../components/round_icon_button.dart';
 
 enum Gender { male, female }
 
@@ -206,53 +208,17 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: 'Calculate',
             onTap: () {
-              Navigator.pushNamed(context, '/results');
+              Navigator.pushNamed(
+                context,
+                '/results',
+              );
             },
-            child: Container(
-              color: kBottomContainerColor,
-              height: kBottomContainerHeight,
-              margin: EdgeInsets.only(
-                top: 10.0,
-              ),
-              padding: EdgeInsets.only(
-                bottom: 20.0,
-              ),
-              width: double.infinity,
-              child: Center(
-                child: Text(
-                  'Calculate'.toUpperCase(),
-                  style: kLargeButtonTextSize,
-                ),
-              ),
-            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData iconData;
-  final VoidCallback onPress;
-
-  RoundIconButton(
-      {required IconData this.iconData, required VoidCallback this.onPress});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      constraints: BoxConstraints.tightFor(
-        height: 56.0,
-        width: 56.0,
-      ),
-      elevation: 0.0,
-      fillColor: Color(0xFF4C4F5E),
-      onPressed: onPress,
-      shape: const CircleBorder(),
-      child: Icon(iconData),
     );
   }
 }
